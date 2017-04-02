@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+	</head>
+    <style>
+        .ball{
+          width:20px;
+          height:20px;
+          border-radius:50%;
+          background:#000;
+          display:inline-block;
+        }
+    </style>
+
+	<body>
+            <p></p>
+                <script>
+                    var fScale = d3.scale.category20();
+
+                        console.log(fScale(1));
+                        console.log(fScale(2));
+                        console.log(fScale("3"));
+                        d3.select("p")
+                            .append("div")
+                            .attr("class","ball")
+                            .style({
+                                    "background":fScale("3")
+                            });
+
+                        for(var i=0; i<40;i++){
+                            d3.select("p")
+                              .append("div")
+                              .classed("ball",true)
+                              .style({
+                                  "background":fScale(i)
+                               });
+                        }
+                </script>
+	</body>
+</html>

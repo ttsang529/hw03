@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script src="https://d3js.org/d3.v3.js"></script>
+	</head>
+
+	<body>    
+           <script>
+            var index=["中國國⺠黨", "⺠主進步黨", "時代力量", "無黨團結聯盟", "親⺠黨"];     
+            //var index=[0,2,4,6,8];
+            var color = ["blue","green","yellow","grey","orange"];
+            var xScale =  d3.scale.ordinal()
+                                .domain(index)
+                                .range(color);
+            //console.log(xScale(3));
+               console.log(xScale("無黨團結聯盟"));
+               console.log(xScale("⺠主進步黨"));
+               console.log(xScale("新黨"));
+           </script>
+	</body>
+</html>

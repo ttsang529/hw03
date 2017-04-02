@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script src="https://d3js.org/d3.v3.js"></script>
+	</head>
+   <body>
+ 
+
+
+    <script>
+        var arr = [85, 60, 99, 49, 77, 82];
+        bind();
+        render();
+        function bind(){
+            //status 1
+            var selection=d3.select("body")
+            .selectAll("div")
+            .data(arr);
+
+            //status 2
+            selection.enter()
+                    .append("div");
+                      
+            //status 3
+            selection.exit()
+                    .remove();
+            }
+        
+        function render(){
+                ///render
+                //all div bind data on status 1 and 2
+                d3.selectAll("div")
+                    .style({
+                        "color":function(d){
+                            if(d<70){
+                                return "red";
+                            }else{
+                                return "black";
+                            }
+                       }
+                })
+                   .text(function (d,i) { 
+                    return i+':'+d;
+                });
+        }
+     
+        
+        // console.log(selectAll("div") );
+    </script>
+	</body>
+</html>

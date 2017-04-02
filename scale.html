@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Scale</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script src="https://d3js.org/d3.v3.js"></script>
+	</head>
+
+	<body>
+        <script>
+            var xScale=d3.scale.linear()
+                .domain([10,20])
+                .range([0,255])
+                .clamp(true);
+            console.log(xScale(30));
+        </script>
+	</body>
+</html>

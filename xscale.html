@@ -1,0 +1,21 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">		
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+	</head>
+
+	<body>
+        <script>
+            var xScale = d3.time.scale()
+                        .domain([new Date("2013-01-01"),new Date("2016-08-01")])
+                        .rangeRound([0,100]);
+            
+            console.log(xScale(new Date("2014-10-30")));
+        </script>
+	</body>
+</html>

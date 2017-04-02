@@ -1,0 +1,110 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>JS Bin</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script src="https://d3js.org/d3.v3.js"></script>
+	</head>
+   <body>
+ 
+    <input type="button" value="Add" onclick ="update()">
+    <input type="button" value="Remove" onclick ="remove()">
+    <script>
+        var arr = [85, 60, 99, 49, 77, 82];
+        var w=600;
+        var h=400;
+        var p=100;
+        svg();
+        bind(arr);
+        render();
+        
+        function svg(){
+            d3.select("body")
+                .append("svg")
+                .attr({
+                    "width" : w,
+                    "height": h
+                })
+        }
+        
+        function bind(data){
+            //rect
+            var selection=d3.select("svg")
+                .selectAll("rect")
+                .data(data);
+                selection.enter().append("rect");
+                selection.exit().remove();
+            
+             //text
+            var selection_text=d3.select("svg")
+                .selectAll("text")
+                .data(data);
+                selection_text.enter().append("text");
+                selection_text.exit().remove();
+        }
+        
+        function render(){
+                ///render
+                
+                //all div bind data on status 1 and 2
+                d3.selectAll("rect")
+                    .attr({
+                        "x": function(d,i){
+                            return p+43*i;
+                        },
+                        "y": function (d){
+                            return h-p-d;
+                        },
+                        "width":40,
+                        "height": function(d){
+                            return d;
+                        },
+                        "fill":function(d){
+                            if(d<78){
+                                    return "red";
+                            }else{
+                                return "lightgreen";
+                            }
+                            }
+                        });
+                    d3.selectAll("text")
+                        .attr({
+                            "x":function(d,i){
+                                return p+43*i+8;
+                            },
+                            "y":function(d){
+                                return h-p+25;
+                            }
+                    }).text(function(d){
+                        return d;
+                    });
+        
+            }
+            function update(){
+                    var num=random(10,100);
+                    arr.push(num);
+                    bind(arr);
+                    render();
+            }
+            function remove(){
+                    arr.shift();
+                    bind(arr);
+                    render();
+            }
+        
+            function random(N,M){
+                var rScale = d3.scale.linear()
+                                .domain([0,1])
+                                .rangeRound([N,M]);
+                return rScale(Math.random());
+                
+            }
+//            function random(N,M){
+//                return Math.ceil(Math.random()*(M-N)+N);
+//            }
+        // console.log(selectAll("div") );
+    </script>
+	</body>
+</html>

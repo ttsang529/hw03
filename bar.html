@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">    
+		<script src="https://d3js.org/d3.v3.js"></script>
+	</head>
+
+	<body>
+        <script>
+            function bind(dataSet){
+                var selection=d3.select("svg")
+                .selectAll("rect")
+                .data(dataSet);
+                selection.enter().append("rect");
+                selection.exit().remove();
+                
+                var selection_text = d3.select("svg")
+                .selectAll("text")
+                .data(dataSet);
+                selection_text.enter().append("text");
+                selection.text.exit().remove();
+                
+                function render(){
+                    var xScale = d3.scale.linear()
+                            .domain({[d3.min(dataSet,function(d)
+        </script>
+	</body>
+</html>
